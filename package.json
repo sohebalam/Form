@@ -1,0 +1,17 @@
+{
+  "name": "passport",
+  "version": "1.0.0",
+  "description": "This is the GitHub code from a Youtube video I created Simple Passport Local Authentication w/ React & Node.js the link for this video can be found here: https://www.youtube.com/watch?v=IUw_TgRhTBE",
+  "main": "backend/server.js",
+  "scripts": {
+    "server": "npm start --prefix backend",
+    "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
+}
