@@ -2,40 +2,29 @@ import React, { useState, useEffect } from "react"
 import { Grid } from "@material-ui/core"
 import Controls from "../components/controls/Controls"
 import { useForm, Form } from "../components/useForm"
-
-const genderItems = [
-  { id: "male", title: "Male" },
-  { id: "female", title: "Female" },
-  { id: "other", title: "Other" },
-]
+// import empservice from "../services/employeeService"
 
 const initialFValues = {
   id: 0,
-  fullName: "",
+  firstName: "",
+  lasttName: "",
   email: "",
-  mobile: "",
+  password: "",
   city: "",
-  gender: "male",
-  departmentId: "",
-  hireDate: new Date(),
-  isPermanent: false,
 }
 
 export default function EmployeeForm() {
   const validate = (fieldValues = values) => {
     let temp = { ...errors }
-    if ("fullName" in fieldValues)
-      temp.fullName = fieldValues.fullName ? "" : "This field is required."
+    if ("firstName" in fieldValues)
+      temp.fullName = fieldValues.firstName ? "" : "This field is required."
+    if ("LasrName" in fieldValues)
+      temp.fullName = fieldValues.lastName ? "" : "This field is required."
     if ("email" in fieldValues)
       temp.email = /$^|.+@.+..+/.test(fieldValues.email)
         ? ""
         : "Email is not valid."
-    if ("mobile" in fieldValues)
-      temp.mobile =
-        fieldValues.mobile.length > 9 ? "" : "Minimum 10 numbers required."
-    if ("departmentId" in fieldValues)
-      temp.departmentId =
-        fieldValues.departmentId.length != 0 ? "" : "This field is required."
+
     setErrors({
       ...temp,
     })
@@ -54,6 +43,7 @@ export default function EmployeeForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (validate()) console.log(values)
   }
 
   return (
@@ -63,7 +53,7 @@ export default function EmployeeForm() {
           <Controls.Input
             name="firstName"
             label="First Name"
-            value={values.fisrtName}
+            value={values.firstName}
             onChange={handleInputChange}
             error={errors.fullName}
           />
